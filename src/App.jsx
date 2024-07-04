@@ -7,7 +7,7 @@ function App() {
   return(
     <div className="App">
       <header className="App-header">
-        <img src="public\logo.png" className="App-logo" alt="logo" />
+        <img src="logo.png" className="App-logo" alt="logo" />
         <h1>Welcome to Indus Dynatech Solutions</h1>
         <p>The Website is under Development ⚠️</p>
       </header>
