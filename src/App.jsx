@@ -1,22 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Products from './pages/Products';
+import Industries from './pages/Industries';
+import Services from './pages/Services';
+import Brands from './pages/Brands';
+import Contact from './pages/Contact';
+import RequestQuote from './pages/RequestQuote';
+import FAQs from './pages/FAQs';
 
 function App() {
-  return(
-    <div className="App">
-      <header className="App-header">
-        <img src="logo.png" className="App-logo" alt="logo" />
-        <h1>Welcome to Indus Dynatech Solutions</h1>
-        <p>The Website is under Development ⚠️</p>
-      </header>
-      <footer className="App-footer">
-        <h3>Ajay Markhedkar +91 7982993011</h3>
-      </footer>
-    </div>
-    
-  )
+  return (
+    <Router basename="/">
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/industries" element={<Industries />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/brands" element={<Brands />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/request-quote" element={<RequestQuote />} />
+              <Route path="/faqs" element={<FAQs />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
