@@ -22,7 +22,12 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center space-x-2">
+            <img
+              src="/logo.png"
+              alt="IndusDynatech Solutions"
+              className="h-12 w-auto"
+            />
             <span className="text-2xl font-bold text-industrial-blue">Indus Dynatech</span>
           </Link>
 
