@@ -26,7 +26,7 @@ app.post('/api/contact', async (req, res) => {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'info@indusdynatech.com', // Your business email
+      to: 'ajay.mark@indusdynatech.com',
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>

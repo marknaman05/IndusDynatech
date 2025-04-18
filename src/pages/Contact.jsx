@@ -107,10 +107,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:info@indusdynatech.com"
+                      href="mailto:ajay.mark@indusdynatech.com"
                       className="text-steel-light hover:text-industrial-blue"
                     >
-                      info@indusdynatech.com
+                      ajay.mark@indusdynatech.com
                     </a>
                   </div>
                 </div>
