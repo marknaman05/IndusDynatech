@@ -19,7 +19,7 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch('https://www.indusdynatech.com/contact', {
+      const response = await fetch('https://smtp-backend-330c.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
