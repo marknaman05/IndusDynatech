@@ -13,6 +13,8 @@ const RequestQuote = () => {
     quantity: '',
     additionalRequirements: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: '', message: '' });
 
   const productCategories = [
     'Linear Motion Bearings',
@@ -29,10 +31,42 @@ const RequestQuote = () => {
     'Special Purpose Machines',
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Quote request submitted:', formData);
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('https://smtp-backend-330c.onrender.com/api/requestquote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Message sent successfully!' });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          productCategory: '',
+          productDetails: '',
+          quantity: '',
+          additionalRequirements: '',
+        });
+      } else {
+        setStatus({ type: 'error', message: data.error || 'Failed to send message' });
+      }
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -72,6 +106,17 @@ const RequestQuote = () => {
               className="bg-white rounded-lg shadow-lg p-8"
             >
               <h2 className="section-title mb-8">Product Inquiry Form</h2>
+              {status.message && (
+                <div
+                  className={`p-4 mb-6 rounded-md ${
+                    status.type === 'success'
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-red-100 text-red-700'
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -202,8 +247,8 @@ const RequestQuote = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <button type="submit" className="btn-primary">
-                    Submit Request
+                  <button type="submit" className="btn-primary" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Submit Request'}
                   </button>
                   <a
                     href="/catalog.pdf"

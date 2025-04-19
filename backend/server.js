@@ -53,6 +53,43 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// Contact form endpoint for quotation
+app.post('/api/requestquote', async (req, res) => {
+  try {
+    const { name, email, phone, company, productCategory, productDetails, quantity, additionalRequirements } = req.body;
+
+    // Email content
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'ajay.mark@indusdynatech.com',
+      subject: `Quotation request from ${name}`,
+      html: `
+        <h2>New Quotation Request</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Company:</strong> ${company}</p>
+        <p><strong>Product Category:</strong> ${productCategory}</p>
+        <p><strong>Product Details:</strong> ${productDetails}</p>
+        <p><strong>Quantity:</strong> ${quantity}</p>
+        <p><strong>Additional Requirements:</strong> ${additionalRequirements}</p>
+      `
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    // ✅ Success response
+    res.status(200).json({ message: 'Message sent successfully' });
+
+  } catch (error) {
+    console.error('Error sending email:', error);
+
+    // ❌ Error response
+    res.status(500).json({ error: 'Failed to send message' });
+  }
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
