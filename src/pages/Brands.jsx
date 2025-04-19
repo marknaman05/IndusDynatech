@@ -215,7 +215,7 @@ const Brands = () => {
               Call Us
             </a>
             <a
-              href="mailto:info@indusdynatech.com"
+              href="mailto:ajay.mark@indusdynatech.com"
               className="btn-secondary"
             >
               Email Us

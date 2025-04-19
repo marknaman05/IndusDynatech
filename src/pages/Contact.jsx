@@ -19,7 +19,7 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('https://smtp-backend-330c.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,10 +107,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:info@indusdynatech.com"
+                      href="mailto:ajay.mark@indusdynatech.com"
                       className="text-steel-light hover:text-industrial-blue"
                     >
-                      info@indusdynatech.com
+                      ajay.mark@indusdynatech.com
                     </a>
                   </div>
                 </div>
@@ -246,7 +246,7 @@ const Contact = () => {
           <h2 className="section-title text-center mb-8">Our Location</h2>
           <div className="h-96 rounded-lg overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.002693714139!2d72.82721431538467!3d19.07598368710038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.229640899009!2d77.4550934!3d28.5928869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef7f8c55299f%3A0x970c775868e82386!2sIndus%20Dynatech%20Solutions!5e0!3m2!1sen!2sin!4v1744986379724!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
